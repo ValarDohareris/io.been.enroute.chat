@@ -1,0 +1,6 @@
+/generated/
+/bin/
+/bin_test/
+/eval
+*.jar
+/.gradle
