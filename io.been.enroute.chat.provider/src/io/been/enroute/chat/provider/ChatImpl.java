@@ -1,10 +1,13 @@
 package io.been.enroute.chat.provider;
 
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.metatype.annotations.Designate;
 
 import io.been.enroute.chat.api.Chat;
 import io.been.enroute.chat.api.Message;
 
+
+@Designate(ocd=Configuration.class)
 /**
  * servicereferences io.been.enroute.chat.api.Chat null
  */

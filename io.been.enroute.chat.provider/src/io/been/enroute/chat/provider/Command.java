@@ -14,15 +14,8 @@ import io.been.enroute.chat.api.Chat;
 import io.been.enroute.chat.api.Message;
 import osgi.enroute.debug.api.Debug;
 
-@Component(
-		property = { 
-			Debug.COMMAND_SCOPE + "=chat", 
-			Debug.COMMAND_FUNCTION + "=chat",
-			Debug.COMMAND_FUNCTION + "=members",
-			Debug.COMMAND_FUNCTION + "=send",
-		}, 
-		service = Command.class
-	)
+@Component(property = { Debug.COMMAND_SCOPE + "=chat", Debug.COMMAND_FUNCTION + "=chat",
+		Debug.COMMAND_FUNCTION + "=members", Debug.COMMAND_FUNCTION + "=send", }, service = Command.class)
 
 public class Command {
 
@@ -32,10 +25,7 @@ public class Command {
 		return members.keySet().stream().sorted().collect(Collectors.toList());
 	}
 
-	@Reference(
-			cardinality = ReferenceCardinality.MULTIPLE, 
-			policy = ReferencePolicy.DYNAMIC
-		)
+	@Reference(cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
 	void addChat(Chat member, Map<String, Object> map) {
 		String userName = getUserName(map);
 		if (userName != null)
@@ -53,9 +43,8 @@ public class Command {
 	}
 
 	public String chat() {
-		return "chat                         help\n"
-		+      "send <from> <to> <text>      send a message\n"
-		+      "members                      get list of members\n";
+		return "chat                         help\n" + "send <from> <to> <text>      send a message\n"
+				+ "members                      get list of members\n";
 	}
 
 	public boolean send(String from, String to, String text) throws Exception {
